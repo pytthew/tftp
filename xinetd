@@ -48,8 +48,8 @@ case "$1" in
     start)
         checkportmap
         log_daemon_msg "Starting internet superserver" "$NAME"
-        start-stop-daemon --pidfile "$PIDFILE" --start --quiet --background --exec "$DAEMON" -- \
-            -pidfile "$PIDFILE" $XINETD_OPTS -dontfork
+        start-stop-daemon --pidfile "$PIDFILE" --start --quiet --exec "$DAEMON" -- \
+            -pidfile "$PIDFILE" $XINETD_OPTS -stayalive
         log_end_msg $?
         ;;
     stop)
